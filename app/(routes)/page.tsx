@@ -7,7 +7,7 @@ import ProductList from "@/components/ProductList";
 
 export const relative = 0;
 
-const HomePage = async () => {
+const Home = async () => {
   const products = await getProducts({ isFeatured: true });
   const billboard = await getBillboard("b4c1d5d4-6ee5-42c3-b960-143df4166642");
 
@@ -23,4 +23,4 @@ const HomePage = async () => {
   )
 }
 
-export default HomePage
+export default Home
