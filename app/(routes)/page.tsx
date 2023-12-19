@@ -5,7 +5,7 @@ import getProducts from "@/actions/getProducts";
 import ProductList from "@/components/ProductList";
 
 
-export const relative = 0;
+export const revalidate = 0;
 
 const Home = async () => {
   const products = await getProducts({ isFeatured: true });
