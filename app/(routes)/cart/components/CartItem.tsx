@@ -58,12 +58,12 @@ const CartItem: React.FC<CartItemProps> = ({
           <IconButton onClick={onRemove} icon={<X size={15} />} />
         </div>
         <div className="relative sm:gap-x-6 sm:pr-0 flex flex-col space-y-1">
-          <div className="absolute z-10 right-0 top-[-3.5rem] xs:relative flex justify-between">
+          <div className="flex justify-between">
             <p className="text-lg font-semibold text-black">
               {data.name}
             </p>
           </div>
-          <div className="absolute z-10 right-0 top-[-2rem] xs:relative flex flex-row">
+          <div className="flex flex-row">
             <Currency value={data.price} />/кг
           </div>
           <div className="flex text-sm items-center">
