@@ -15,20 +15,18 @@ const Footer = () => {
             &quot; Виноград Бессарабії &quot; є невеликим сімейним бізнесом, який спеціалізується на вирощуванні винограду в українській Бессарабії. Ми вирощуємо різні сорти винограду, включаючи Мерло, Одеський Чорний та Ізабелла, які збирають вручну для відбору плодів найвищої якості для виробництва вина. Після цього виноград транспортується до виноробної лабораторії, де проводяться всі необхідні процеси для виробництва вина. Усі процеси виконуються з великою увагою до деталей та використовують традиційні методи виноградарства, щоб забезпечити високу якість та смак винограду та вина. Хоча &quot;Виноград Бессарабії&quot; не виробляє вино, пропонуються дегустаційні тури для відвідувачів, щоб відчути унікальний смак місцевого винограду.
           </p>
         </div>
-        <div className='flex justify-between items-center'>
-          <div className='flex items-center text-md'>
-            <div className='flex justify-between items-center'>
+        <div className='flex flex-col md:flex-row justify-between items-center'>
+          <div className='flex flex-col sm:flex-row items-center text-md'>
               <div className='flex items-center justify-center ml-3'>
                 <Phone className='h-5 w-5 mr-3' /> 
                 <a href='tel:+380961040713'>+38 (096) 104 07 13</a>
               </div>
               <div className='flex items-center justify-center ml-3'>
                 <Mail className='h-5 w-5 mr-3' />
-                <a href='mailto:ivanzlatoff@gmail.com'>ivanzlatoff@gmail.com</a>
+                <a href='mailto:ivanzlatoff@gmail.com'>vinogradnik.bessarabii@gmail.com</a>
               </div>
-            </div>
           </div>
-          <div className='flex justify-center'>
+          <div className='flex justify-center mt-2'>
             <Image
               src={paymentPicture}
               width={200}

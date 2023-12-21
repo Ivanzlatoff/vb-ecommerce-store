@@ -24,7 +24,7 @@ const NavbarActions = () => {
   }
 
   return (
-    <div className="ml-auto flex items-center gap-x-4">
+    <div className="sm:ml-auto flex items-center gap-x-4">
       {/* <ThemeToggle /> */}
       <Button
         onClick={() => router.push("/cart")}
