@@ -20,7 +20,6 @@ const Summary = () => {
       toast.success("Payment completed.");
       removeAll();
       setLoading(true);
-      console.log(searchParams)
       redirect("/success");
     }
 
