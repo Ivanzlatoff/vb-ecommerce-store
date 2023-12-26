@@ -1,6 +1,6 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { redirect, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
@@ -20,6 +20,8 @@ const Summary = () => {
       toast.success("Payment completed.");
       removeAll();
       setLoading(true);
+      console.log(searchParams)
+      redirect("/success");
     }
 
     if (searchParams.get("cancelled")) {
