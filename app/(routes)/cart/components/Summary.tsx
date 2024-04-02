@@ -34,6 +34,7 @@ const Summary = () => {
   }, 0);
 
   const onCheckout = async () => {
+    console.log({items})
     setLoading(true);
     const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
       cartItems: items,
