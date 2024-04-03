@@ -10,6 +10,9 @@ import Button from "./ui/Button";
 import useCart from "@/hooks/use-cart";
 import { Input } from "./ui/input";
 import toast from "react-hot-toast";
+import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "./ui/dialog";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 
 interface InfoProps {
@@ -21,6 +24,7 @@ const Info: React.FC<InfoProps> = ({
 }) => {
   const [quantity, setQuantity] = useState(100);
   const cart = useCart();
+  const router = useRouter();
 
   const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
@@ -67,14 +71,30 @@ const Info: React.FC<InfoProps> = ({
           </div>
         </div>
         <div className="flex items-center gap-x-3">
-          <Button 
-            className="flex items-center gap-x-2"
-            onClick={onAddToCart}
-            disabled={quantity < 100}
-          >
-            Додати до кошику
-            <ShoppingCart />
-          </Button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button 
+                className="flex items-center gap-x-2"
+                onClick={onAddToCart}
+                disabled={quantity < 100}
+              >
+                Додати до кошику
+                <ShoppingCart />
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <Button onClick={() => router.push("/cart")}>
+                  Оформити замовлення
+                </Button>
+              </DialogHeader>
+              <DialogHeader>
+                <Button onClick={() => router.push("/")}>
+                  Продовжити покупки
+                </Button>               
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
       <hr className="my-4" />
@@ -115,7 +135,7 @@ const Info: React.FC<InfoProps> = ({
           <Currency value={data && quantity * Number(data.price)} />
         </div>
       </div>
-      {(quantity < 100 || quantity > 9999) && <p className="text-center bg-red-200 text-red-500 mt-1 p-1 rounded-lg">Оформити замовлення можна від 100 кг</p>}
+      {quantity < 100 && <p className="text-center bg-red-200 text-red-500 mt-1 p-1 rounded-lg">Оформити замовлення можна від 100 кг</p>}
       <hr className="my-4" />
       <div className="flex text-justify">
         {data?.description}
