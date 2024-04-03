@@ -7,14 +7,14 @@ import paymentPicture from '../app/pictures/payment.png';
 
 const Footer = () => {
   return (
-    <footer className='bg-white border-t'>
+    <footer className='bg-white border-t mx-auto max-w-7xl my-20'>
       <div className="space-y-4 p-4">
-        <div>
+        {/* <div>
           <h3 className='font-bold text-md pb-2 text-center'>Виноград Бессарабії</h3>
           <p className='flex text-sm text-justify'>
             &quot;Виноград Бессарабії&quot; є невеликим сімейним бізнесом, який спеціалізується на вирощуванні винограду в українській Бессарабії. Ми вирощуємо різні сорти винограду, включаючи Мерло, Одеський Чорний та Ізабелла, які збирають вручну для відбору плодів найвищої якості для виробництва вина. Після цього виноград транспортується до виноробної лабораторії, де проводяться всі необхідні процеси для виробництва вина. Усі процеси виконуються з великою увагою до деталей та використовують традиційні методи виноградарства, щоб забезпечити високу якість та смак винограду та вина. Хоча &quot;Виноград Бессарабії&quot; не виробляє вино, пропонуються дегустаційні тури для відвідувачів, щоб відчути унікальний смак місцевого винограду.
           </p>
-        </div>
+        </div> */}
         <div className='flex flex-col md:flex-row justify-between items-center'>
           <div className='flex flex-col sm:flex-row items-center text-md'>
               <div className='flex items-center justify-center ml-3'>

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Expand, ShoppingCart } from "lucide-react";
+import { Expand, ShoppingBag, ShoppingCart } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { MouseEventHandler } from "react";
 
@@ -57,18 +57,18 @@ const ProductCard: React.FC<ProductCardProps> = ({
               onClick={onPreview}
               icon={<Expand size={20} className="text-gray-600"/>}
             />
-            <IconButton
-              onClick={onAddToCart}
-              icon={<ShoppingCart size={20} className="text-gray-600"/>}
-            />
           </div>
         </div>
       </div>
       {/* Description */}
       <div className="">
         <div>
-          <p className="font-semibold text-lg">
+          <p className="flex items-center justify-between font-semibold text-lg">
             {data.name}
+            <IconButton
+              onClick={onAddToCart}
+              icon={<ShoppingCart size={20} className="text-gray-600"/>}
+            />
           </p>
           <div className="flex justify-between">
             <p className="text-sm text-gray-500">
