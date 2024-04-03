@@ -115,7 +115,7 @@ const Info: React.FC<InfoProps> = ({
           <Currency value={data && quantity * Number(data.price)} />
         </div>
       </div>
-      {(quantity < 100 || quantity > 9999) && <p className="text-center bg-red-200 text-red-500 mt-1 p-1 rounded-lg">Оформити замовленя можна від 100 кг</p>}
+      {(quantity < 100 || quantity > 9999) && <p className="text-center bg-red-200 text-red-500 mt-1 p-1 rounded-lg">Оформити замовлення можна від 100 кг</p>}
       <hr className="my-4" />
       <div className="flex text-justify">
         {data?.description}
