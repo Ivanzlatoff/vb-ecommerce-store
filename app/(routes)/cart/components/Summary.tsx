@@ -227,7 +227,7 @@ const Summary = () => {
                   <FormError message={error} />
                   <FormSuccess message={success} />
                   <Button
-                    disabled={isPending}
+                    disabled={loading || isPending}
                     type="submit"
                     className="w-full"
                   >
