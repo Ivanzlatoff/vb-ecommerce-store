@@ -105,13 +105,14 @@ const CartItem: React.FC<CartItemProps> = ({
             />
             <Plus color="green" className="ml-0" size={20} onClick={() => handleQuantity("asc")} />
           </div>
+          {quantity < 100 && <p className="text-center bg-red-200 text-red-500 mt-2 p-1 rounded-lg">Мінімум 100 кг</p>}
           <div className="text-lg text-black flex flex-row space-x-2">
             <p>Всього за продукт:</p> 
-            <Currency value={Number(quantity || 100) * Number(data.price)} />
+            <Currency value={Number(Math.max(quantity, 100)) * Number(data.price)} />
             <p>грн</p>
           </div>
         </div>
-        {Number(data.quantity || 100) !== quantity && 
+        {quantity > 100 && (Number(data.quantity || 100) !== quantity && 
           <div className="flex flex-row space-x-4">
             <Button 
               onClick={(e) => onUpdateCart(e)}
@@ -125,7 +126,7 @@ const CartItem: React.FC<CartItemProps> = ({
               >
               Відмінити
             </Button>
-          </div>
+          </div>)
         }
       </div>
     </li>

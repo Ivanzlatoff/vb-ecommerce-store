@@ -39,7 +39,7 @@ const Footer = () => {
       <hr />
       <div className='mx-auto py-8'>
         <p className='text-center text-xs text-black'>
-          &copy; 2023 Vinogradnik Bessarabii Ltd. All rights reserved.
+          &copy; 2024 Vinogradnik Bessarabii Ltd. All rights reserved.
         </p>
       </div>
     </footer>

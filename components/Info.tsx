@@ -70,6 +70,7 @@ const Info: React.FC<InfoProps> = ({
           <Button 
             className="flex items-center gap-x-2"
             onClick={onAddToCart}
+            disabled={quantity < 100}
           >
             Додати до кошику
             <ShoppingCart />
@@ -84,13 +85,14 @@ const Info: React.FC<InfoProps> = ({
             type="text"
             pattern="[0-9]*"
             inputMode="numeric"
+            min={100}
             step={100}
             value={quantity}
             onChange={(e) => {
               const value = e.target.value;
               if (/^\d*$/.test(value)) {
                 // Ensure the value is less than or equal to the maximum value
-                Number(value) > 9999 && toast.error("Максимум 9999 кг одного продукту. Якщо бажаєте більше, будьласка зв'яжіться з нами")
+                Number(value) > 9999 && toast.error("Максимум 9999 кг одного продукту. Якщо бажаєте більше, будь ласка зв'яжіться з нами")
                 const newValue = Math.min(Number(value), 9999);
                 setQuantity(newValue);
               }
@@ -113,6 +115,7 @@ const Info: React.FC<InfoProps> = ({
           <Currency value={data && quantity * Number(data.price)} />
         </div>
       </div>
+      {quantity < 100 && <p className="text-center bg-red-200 text-red-500 mt-1 p-1 rounded-lg">Мінімум 100 кг</p>}
       <hr className="my-4" />
       <div className="flex text-justify">
         {data?.description}
