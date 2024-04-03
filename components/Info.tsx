@@ -13,6 +13,7 @@ import toast from "react-hot-toast";
 import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "./ui/dialog";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import usePreviewModal from "@/hooks/use-preview-modal";
 
 
 interface InfoProps {
@@ -25,6 +26,7 @@ const Info: React.FC<InfoProps> = ({
   const [quantity, setQuantity] = useState(100);
   const cart = useCart();
   const router = useRouter();
+  const previewModal = usePreviewModal();
 
   const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
@@ -42,6 +44,15 @@ const Info: React.FC<InfoProps> = ({
       }
   };
 
+  const onAskOrder: MouseEventHandler<HTMLButtonElement> = (event) => {
+    router.push("/cart");
+    previewModal.onClose();
+  }
+
+  const onContinueShopping: MouseEventHandler<HTMLButtonElement> = (event) => {
+    router.push("/");
+    previewModal.onClose();
+  }
 
   return (
     <div>
@@ -84,12 +95,12 @@ const Info: React.FC<InfoProps> = ({
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
-                <Button onClick={() => router.push("/cart")}>
+                <Button onClick={onAskOrder}>
                   Оформити замовлення
                 </Button>
               </DialogHeader>
               <DialogHeader>
-                <Button onClick={() => router.push("/")}>
+                <Button onClick={onContinueShopping}>
                   Продовжити покупки
                 </Button>               
               </DialogHeader>
