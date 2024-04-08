@@ -28,7 +28,6 @@ import {
 } from "@/components/ui/dialog"
 import useCart from "@/hooks/use-cart";
 import { Input } from "@/components/ui/input";
-import { PhoneInput } from "./PhoneInput";
 import { Textarea } from "@/components/ui/textarea";
 import { CustomerDetailsSchema } from "@/schemas";
 import FormSuccess from "@/components/ui/FormSuccess";
@@ -44,6 +43,10 @@ const Summary = () => {
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
+  console.log({
+    isPending,
+    loading
+  })
 
   const form = useForm<z.infer<typeof CustomerDetailsSchema>>({
     resolver: zodResolver(CustomerDetailsSchema),
@@ -70,7 +73,10 @@ const Summary = () => {
           setError(data.error);
           setSuccess(data.success);
         })
-        .catch(() => setError('Щось пішло не так!'));
+        .catch(() => {
+          setError('Щось пішло не так!');
+          setLoading(false);
+        });
     })
   }
 
@@ -83,8 +89,9 @@ const Summary = () => {
     }
 
     if (searchParams.get("cancelled")) {
-      setLoading(true)
-      toast.error("Щось пішло не так!")
+      setLoading(true);
+      toast.error("Щось пішло не так!");
+      setLoading(false);
     }
   }, [searchParams, removeAll]);
 
@@ -114,6 +121,7 @@ const Summary = () => {
       window.location = response.data.url;
       return { success: "Лист із підтвердженням надіслано." };
     } catch(err) {
+      setLoading(false);
       return { error: "Щось пішло не так." }
     }
   }
@@ -155,7 +163,8 @@ const Summary = () => {
                             <Input 
                               {...field}
                               disabled={isPending} 
-                              placeholder="Микола Петренко" 
+                              placeholder="Микола Петренко"
+                              className="focus-visible:ring-offset-[-2] focus:border-black font-bold text-black border-solid border-2 border-slate-500"
                             />
                           </FormControl>
                           <FormMessage className="mt-2" />
@@ -180,7 +189,7 @@ const Summary = () => {
                                 placeholder="+38 098 123 45 67"
                                 {...field}
                                 disabled={isPending}
-                                className="px-2 py-2 mt-2 border rounded-lg"
+                                className="focus-visible:ring-offset-[-2] focus:border-black px-2 py-2 mt-2 rounded-lg font-bold text-black border-solid border-2 border-slate-500"
                                 />
                             </FormControl>
                             <FormMessage className="mt-2" />
@@ -200,6 +209,7 @@ const Summary = () => {
                               disabled={isPending} 
                               placeholder="email@mail.com"
                               type="email" 
+                              className="focus-visible:ring-offset-[-2] focus:border-black font-bold text-black border-solid border-2 border-slate-500"
                             />
                           </FormControl>
                           <FormMessage className="mt-2" />
@@ -217,6 +227,7 @@ const Summary = () => {
                               {...field}
                               disabled={isPending} 
                               placeholder="Місце проживання..."
+                              className="focus-visible:ring-offset-[-2] focus:border-black font-bold text-black border-solid border-2 border-slate-500"
                             />
                           </FormControl>
                           <FormMessage className="mt-2" />
